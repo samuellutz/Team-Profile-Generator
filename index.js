@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+// const manager = require('.lib/manager');
+// const engineer = require('.lib/engineer');
+// const intern = require('.lib/intern');
 
 // need questions to start
 
@@ -27,18 +30,21 @@ const questions = () => {
         },
         {
             type: 'list',
-            name: 'addMemeber',
+            name: 'addMember',
             message: 'what type of team member would you like to add next?',
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
     .then((manager) => {
+        // switch to engineer or intern
         switch(manager.addMember) {
             case 'Engineer':
                 engineerQuestions();
                 break;
-            case 'intern':
+            case 'Intern':
                 internQuestions();
+                break;
+            default:
                 console.log(manager);
         }
     })
@@ -67,13 +73,23 @@ const engineerQuestions = () => {
         },
         {
             type: 'list',
-            name: 'addMemeber',
+            name: 'addMember',
             message: 'what type of team member would you like to add next?',
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
     .then((engineer) => {
+        // switch to engineer or intern
+        switch(engineer.addMember) {
+        case 'Engineer':
+                engineerQuestions();
+                break;
+            case 'Intern':
+                internQuestions();
+                break;
+            default:
         console.log(engineer);
+        }
     })
 };
 const internQuestions = () => {
@@ -105,6 +121,20 @@ const internQuestions = () => {
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
-    console.log(intern);
-}
+    .then((Intern) => {
+        // switch to engineer or intern
+        switch(Intern.addMember) {
+        case 'Engineer':
+                engineerQuestions();
+                break;
+            case 'Intern':
+                internQuestions();
+                break;
+            default:
+        console.log(Intern);
+        }
+    })
+};
+
+
 questions();
