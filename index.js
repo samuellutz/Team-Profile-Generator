@@ -5,7 +5,7 @@ const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
 
 // need questions to start
-
+team = [];
 const managerQuestions = () => {
     inquirer.prompt([
         {
@@ -85,7 +85,7 @@ const engineerQuestions = () => {
     // switch between engineer or intern
     .then((engineerAnswers) => {
         console.log(engineerAnswers)
-        const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.Github)
+        const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github)
         team.push(engineer)
         console.log(engineer)
         switch(engineerAnswers.addMember) {
@@ -132,7 +132,7 @@ const internQuestions = () => {
     // switch between engineer or intern
     .then((internAnswers) => {
         console.log(internAnswers)
-        const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.internSchool)
+        const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
         team.push(intern)
         console.log(intern)
         switch(internAnswers.addMember){
