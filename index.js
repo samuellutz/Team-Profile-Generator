@@ -1,12 +1,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const manager = require('./lib/manager');
+const Manager = require('./lib/manager');
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
 
 // need questions to start
 
-const questions = () => {
+const managerQuestions = () => {
     inquirer.prompt([
         {
             type: 'input',
@@ -129,9 +129,12 @@ const internQuestions = () => {
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
-    .then((Intern) => {
-        // switch to engineer or intern
-        switch(Intern.addMember) {
+    .then((internAnswers) => {
+        console.log(internAnswers)
+        const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.internSchool)
+        team.push(intern)
+        console.log(intern)
+        switch(internAnswers.addMember){
         case 'Engineer':
                 engineerQuestions();
                 break;
@@ -145,4 +148,4 @@ const internQuestions = () => {
 };
 
 
-questions();
+managerQuestions();
