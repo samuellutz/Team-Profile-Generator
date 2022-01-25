@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Manager = require('./lib/manager');
+const Manager = require('./lib/Manager');
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
 
@@ -82,7 +82,7 @@ const engineerQuestions = () => {
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
-    // switch to engineer or intern
+    // switch between engineer or intern
     .then((engineerAnswers) => {
         console.log(engineerAnswers)
         const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.Github)
@@ -129,6 +129,7 @@ const internQuestions = () => {
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
+    // switch between engineer or intern
     .then((internAnswers) => {
         console.log(internAnswers)
         const intern = new Intern(internAnswers.internName, internAnswers.internID, internAnswers.internEmail, internAnswers.internSchool)
