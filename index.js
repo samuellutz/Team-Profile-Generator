@@ -1,8 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Manager = require('./lib/Manager');
-const engineer = require('./lib/engineer');
-const intern = require('./lib/intern');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+// const generateTeam = require('./src/generateTeam');
 
 // need questions to start
 team = [];
@@ -37,19 +38,19 @@ const managerQuestions = () => {
     ])
         // switch to engineer or intern
         .then((managerAnswers) => {
-            console.log(managerAnswers)
+            // console.log(managerAnswers)
             const manager = new Manager(managerAnswers.id, managerAnswers.name, managerAnswers.email, managerAnswers.officeNumber)
             team.push(manager)
-            console.log(manager)
+            // console.log(manager)
             switch(managerAnswers.addMember) {
-            case 'Engineer':
-                engineerQuestions();
-                break;
-            case 'Intern':
-                internQuestions();
-                break;
-            default:
-                console.log(manager);
+                case 'Engineer':
+                    engineerQuestions();
+                    break;
+                case 'Intern':
+                    internQuestions();
+                    break;
+                default:
+                // console.log(manager);
         }
     })
 };
@@ -149,4 +150,9 @@ const internQuestions = () => {
 };
 
 
-managerQuestions();
+function writeToFile(filename, data) {
+    fs.writeFile(filename, data, (err) => {
+        if(err) throw err;
+        console.log('file saved')
+    });
+};
