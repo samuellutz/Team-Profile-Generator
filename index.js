@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const manager = require('.lib/manager');
-// const engineer = require('.lib/engineer');
-// const intern = require('.lib/intern');
+const manager = require('./lib/manager');
+const engineer = require('./lib/engineer');
+const intern = require('./lib/intern');
 
 // need questions to start
 
@@ -35,9 +35,13 @@ const questions = () => {
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
-    .then((manager) => {
         // switch to engineer or intern
-        switch(manager.addMember) {
+        .then((managerAnswers) => {
+            console.log(managerAnswers)
+            const manager = new Manager(managerAnswers.id, managerAnswers.name, managerAnswers.email, managerAnswers.officeNumber)
+            team.push(manager)
+            console.log(manager)
+            switch(managerAnswers.addMember) {
             case 'Engineer':
                 engineerQuestions();
                 break;
@@ -78,9 +82,13 @@ const engineerQuestions = () => {
             choices: ['Engineer', 'Intern', 'I don\'t want to add any more team members'],
         }
     ])
-    .then((engineer) => {
-        // switch to engineer or intern
-        switch(engineer.addMember) {
+    // switch to engineer or intern
+    .then((engineerAnswers) => {
+        console.log(engineerAnswers)
+        const engineer = new Engineer(engineerAnswers.engineerName, engineerAnswers.engineerID, engineerAnswers.engineerEmail, engineerAnswers.Github)
+        team.push(engineer)
+        console.log(engineer)
+        switch(engineerAnswers.addMember) {
         case 'Engineer':
                 engineerQuestions();
                 break;
