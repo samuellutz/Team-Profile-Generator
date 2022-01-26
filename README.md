@@ -34,9 +34,11 @@ Jest
 
 * [See Live Site](#)
 
+![image](https://user-images.githubusercontent.com/91674571/151213443-33055fcc-c930-4c2c-9ace-02660d45bf31.png)
+
 ![image](https://user-images.githubusercontent.com/91674571/151213385-ce7d1864-0f2c-45e4-97da-0ace473aaa3b.png)
 
-![image](https://user-images.githubusercontent.com/91674571/151213443-33055fcc-c930-4c2c-9ace-02660d45bf31.png)
+![image](https://user-images.githubusercontent.com/91674571/151214150-110a6be4-54da-4f7a-a674-b5ee8bc6b424.png)
 
 
 ## Authors
