@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Manager = require('./lib/manager').default;
-const Engineer = require('./lib/engineer');
-const Intern = require('./lib/intern');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 const generateTeam = require('./src/generateTeam');
 
 // need questions to start
@@ -58,12 +58,12 @@ const engineerQuestions = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'What is the engineer\'s name?',
+            message: 'What is the engineer\'s id?',
         },
         {
             type: 'input',
             name: 'id',
-            message: 'What is the engineer\'s id?',
+            message: 'What is the engineer\'s name?',
         },
         {
             type: 'input',
@@ -84,10 +84,10 @@ const engineerQuestions = () => {
     ])
     // switch between engineer or intern
     .then((engineerAnswers) => {
-        console.log(engineerAnswers)
+        // console.log(engineerAnswers)
         const engineer = new Engineer(engineerAnswers.name, engineerAnswers.id, engineerAnswers.email, engineerAnswers.github)
         team.push(engineer)
-        console.log(engineer)
+        // console.log(engineer)
         switch(engineerAnswers.addMember) {
         case 'Engineer':
                 engineerQuestions();
@@ -105,12 +105,12 @@ const internQuestions = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'What is the intern\'s name?'
+            message: 'What is the intern\'s id?'
         },
         {
             type: 'input',
             name: 'id',
-            message: 'What is the intern\'s id?'
+            message: 'What is the intern\'s name?'
         },
         {
             type: 'input',
@@ -131,10 +131,10 @@ const internQuestions = () => {
     ])
     // switch between engineer or intern
     .then((internAnswers) => {
-        console.log(internAnswers)
+        // console.log(internAnswers)
         const intern = new Intern(internAnswers.name, internAnswers.id, internAnswers.email, internAnswers.school)
         team.push(intern)
-        console.log(intern)
+        // console.log(intern)
         switch(internAnswers.addMember){
         case 'Engineer':
                 engineerQuestions();

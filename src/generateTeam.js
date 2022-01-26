@@ -1,6 +1,6 @@
 const Manager = require('../lib/Manager');
-
-
+const Engineer = require('../lib/Engineer')
+const Intern = require('../lib/Intern')
 
 
 function generateCards(team) {
@@ -24,7 +24,7 @@ function generateCards(team) {
     }
     return cards.join(``)
   }
-  
+//   main body for manager card
   let generateManagerCard = (Manager) => {
     return `
     <div class="card m-1 shadow" style="width: 18rem">
@@ -42,8 +42,45 @@ function generateCards(team) {
     </div>
     `
   }
-
-
+//   engineer card
+  let generateEngineerCard = (Engineer) => {
+    return `
+    <div class="card m-1 shadow" style="width: 18rem">
+      <div class='card-header bg-success'>
+        <h3 class="card-title">${Engineer.getName()}</h3>
+        <h6 class="card-text"><i class="fa fa-laptop"></i> ${Engineer.getRole()}</h6>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${Engineer.getId()}</li>
+          <li class="list-group-item">Email: ${Engineer.getEmail()}</li>
+          <li class="list-group-item">GitHub: ${Engineer.getGithub()}</li>
+        </ul>
+      </div>
+    </div>
+    `
+  };
+//   intern card
+  let generateInternCard = (Intern) => {
+    return `
+    <div class="card m-1 shadow" style="width: 18rem">
+      <div class='card-header bg-warning'>
+        <h3 class="card-title">${Intern.getName()}</h3>
+        <h6 class="card-text"><i class="fa fa-graduation-cap"></i> ${Intern.getRole()}</h6>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">ID: ${Intern.getId()}</li>
+          <a href = "mailto: ${Intern.getEmail()}"></a>
+          <li class="list-group-item">Email: ${Intern.getEmail()}</li>
+          <li class="list-group-item">School: ${Intern.getSchool()}</li>
+        </ul>
+      </div>
+    </div>
+    `
+  }
+  
+// function to create the page
 function generateTeam(team) {
     console.log(team)
   return `
