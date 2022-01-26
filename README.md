@@ -7,8 +7,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Inquirer
-Jest
+1. Inquirer
+2. Jest
 
 ### Installing
 
